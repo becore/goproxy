@@ -36,8 +36,8 @@ stdout, err := cmd.StdoutPipe()
 	bssttxb:=strings.Split(bssttx," ")[0]
 	bsstrxbii, _ := strconv.Atoi(bsstrxb)
 	bsstrxbi:=int64(bsstrxbii)
-	bsstrxbii, _ := strconv.Atoi(bssttxb)
-	bsstrxbi:=int64(bsstrxbii)
+	bssttxbii, _ := strconv.Atoi(bssttxb)
+	bsstrxbi:=int64(bssttxbii)
 	return bsstrxbi+bsstrxbi
 }
 
