@@ -10,10 +10,10 @@ import (
 	"os"
 
 	logging "github.com/op/go-logging"
-	"github.com/shell909090/goproxy/cryptconn"
-	"github.com/shell909090/goproxy/ipfilter"
+	"github.com/xiaokangwang/goproxy/cryptconn"
+	"github.com/xiaokangwang/goproxy/ipfilter"
 	"github.com/xiaokangwang/goproxy/msocks"
-	"github.com/shell909090/goproxy/sutils"
+	"github.com/xiaokangwang/goproxy/sutils"
 )
 
 var log = logging.MustGetLogger("")
