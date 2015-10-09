@@ -32,8 +32,8 @@ stdout, err := cmd.StdoutPipe()
 	bs:=string(b)
 	
 	bss:=strings.Split(bs,"\n")
-	bsstrx:=strings.Trim(bss[4]," ")
-	bssttx:=strings.Trim(bss[6]," ")
+	bsstrx:=strings.Trim(bss[3]," ")
+	bssttx:=strings.Trim(bss[5]," ")
 	bsstrxb:=strings.Split(bsstrx," ")[0]
 	bssttxb:=strings.Split(bssttx," ")[0]
 	bsstrxbii, _ := strconv.Atoi(bsstrxb)
