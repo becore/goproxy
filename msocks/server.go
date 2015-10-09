@@ -30,6 +30,7 @@ stdout, err := cmd.StdoutPipe()
 	}
 	b,_:=ioutil.ReadAll(stdout)
 	bs:=string(b)
+	
 	bss:=strings.Split(bs,"\n")
 	bsstrx:=strings.Trim(bss[4]," ")
 	bssttx:=strings.Trim(bss[6]," ")
@@ -39,6 +40,8 @@ stdout, err := cmd.StdoutPipe()
 	bsstrxbi:=int64(bsstrxbii)
 	bssttxbii, _ := strconv.Atoi(bssttxb)
 	bssttxbi:=int64(bssttxbii)
+	
+	fmt.Println(bs,bss,bsstrxb,bssttxb) 
 	return bsstrxbi+bssttxbi
 }
 
