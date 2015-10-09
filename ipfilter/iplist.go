@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	logging "github.com/op/go-logging"
-	"github.com/shell909090/goproxy/sutils"
+	"github.com/xiaokangwang/goproxy/sutils"
 )
 
 var log = logging.MustGetLogger("")
