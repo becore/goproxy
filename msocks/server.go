@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/xiaokangwang/goproxy/sutils"
+	"fmt"
 	
 )
 
@@ -48,25 +49,29 @@ var lastdayuse int64
 var lastreset int64
 
 func untilok(limit int64){
+	fmt.Println("untilok")
 	nowt := time.Now().Unix()
 	
 	if nowt-40<lastch{
+		fmt.Println("lstc skip")
 		return
 		}
 	
 	if lastreset+86400<=nowt{
 		lastreset=nowt
 		lastdayuse=getusegev()
+		fmt.Println("refresh skip",lastdayuse,lastreset)
 		return
 		}
 	
 	currusege := getusegev()-lastdayuse
 	
 	if currusege >= limit {
+		fmt.Println("limit reach",(86400-(nowt-lastreset)))
 		time.Sleep(time.Duration((86400-(nowt-lastreset)))*time.Second)
 		return
 		}
-		
+	fmt.Println("limit checkok",currusege)
 	lastch=nowt
 	}
 
