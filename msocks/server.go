@@ -63,7 +63,7 @@ func untilok(limit int64){
 	currusege := getusegev()-lastdayuse
 	
 	if currusege >= limit {
-		time.Sleep((86400-(nowt-lastreset))*time.Second)
+		time.Sleep(time.Duration((86400-(nowt-lastreset)))*time.Second)
 		return
 		}
 		
