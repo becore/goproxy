@@ -34,8 +34,10 @@ stdout, err := cmd.StdoutPipe()
 	bssttx:=strings.Trim(bss[6]," ")
 	bsstrxb:=strings.Split(bsstrx," ")[0]
 	bssttxb:=strings.Split(bssttx," ")[0]
-	bsstrxbi, _ := int64(strconv.Atoi(bsstrxb))
-	bsstrxbi, _ := int64(strconv.Atoi(bssttxb))
+	bsstrxbii, _ := strconv.Atoi(bsstrxb)
+	bsstrxbi:=int64(bsstrxbii)
+	bsstrxbii, _ := strconv.Atoi(bssttxb)
+	bsstrxbi:=int64(bsstrxbii)
 	return bsstrxbi+bsstrxbi
 }
 
