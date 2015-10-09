@@ -4,7 +4,7 @@ import (
 	"crypto/cipher"
 	"net"
 
-	"github.com/shell909090/goproxy/sutils"
+	"github.com/xiaokangwang/goproxy/sutils"
 )
 
 type Dialer struct {
