@@ -12,7 +12,7 @@ import (
 	logging "github.com/op/go-logging"
 	"github.com/shell909090/goproxy/cryptconn"
 	"github.com/shell909090/goproxy/ipfilter"
-	"github.com/shell909090/goproxy/msocks"
+	"github.com/xiaokangwang/goproxy/msocks"
 	"github.com/shell909090/goproxy/sutils"
 )
 
