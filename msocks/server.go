@@ -8,7 +8,65 @@ import (
 	"time"
 
 	"github.com/shell909090/goproxy/sutils"
+	
 )
+
+import "os/exec"
+import "io/ioutil"
+import "strings"
+import "strconv"
+
+
+
+func getusegev()int64{
+cmd:=exec.Command("ip", "-s", "link", "show", "venet0")
+stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := cmd.Start(); err != nil {
+		log.Fatal(err)
+	}
+	b,_:=ioutil.ReadAll(stdout)
+	bs:=string(b)
+	bss:=strings.Split(bs,"\n")
+	bsstrx:=strings.Trim(bss[4]," ")
+	bssttx:=strings.Trim(bss[6]," ")
+	bsstrxb:=strings.Split(bsstrx," ")[0]
+	bssttxb:=strings.Split(bssttx," ")[0]
+	bsstrxbi, _ := int64(strconv.Atoi(bsstrxb))
+	bsstrxbi, _ := int64(strconv.Atoi(bssttxb))
+	return bsstrxbi+bsstrxbi
+}
+
+var lastch int64
+
+var lastdayuse int64
+
+var lastreset int64
+
+func untilok(limit int64){
+	nowt := time.Now().Unix()
+	
+	if nowt-40<lastch{
+		return
+		}
+	
+	if lastreset+86400<=nowt{
+		lastreset=nowt
+		lastdayuse=getusegev()
+		return
+		}
+	
+	currusege := getusegev()-lastdayuse
+	
+	if currusege >= limit {
+		time.Sleep((86400-(nowt-lastreset))*time.Second)
+		return
+		}
+		
+	lastch=nowt
+	}
 
 type MsocksServer struct {
 	*SessionPool
@@ -101,7 +159,10 @@ func (ms *MsocksServer) Handler(conn net.Conn) {
 func (ms *MsocksServer) Serve(listener net.Listener) (err error) {
 	var conn net.Conn
 
-	for {
+	for {	
+		
+		untilok(6000000000)
+		
 		conn, err = listener.Accept()
 		if err != nil {
 			log.Error("%s", err)
