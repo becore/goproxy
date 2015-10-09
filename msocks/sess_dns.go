@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/miekg/dns"
-	"github.com/shell909090/goproxy/sutils"
+	"github.com/xiaokangwang/goproxy/sutils"
 )
 
 func MakeDnsFrame(host string, t uint16, streamid uint16) (req *dns.Msg, f Frame, err error) {
