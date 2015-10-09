@@ -4,7 +4,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/shell909090/goproxy/sutils"
+	"github.com/xiaokangwang/goproxy/sutils"
 )
 
 func (s *Session) Dial(network, address string) (c *Conn, err error) {
