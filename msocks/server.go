@@ -7,7 +7,7 @@ import (
 
 	"time"
 
-	"github.com/shell909090/goproxy/sutils"
+	"github.com/xiaokangwang/goproxy/sutils"
 	
 )
 
