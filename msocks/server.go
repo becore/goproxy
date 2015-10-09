@@ -37,8 +37,8 @@ stdout, err := cmd.StdoutPipe()
 	bsstrxbii, _ := strconv.Atoi(bsstrxb)
 	bsstrxbi:=int64(bsstrxbii)
 	bssttxbii, _ := strconv.Atoi(bssttxb)
-	bsstrxbi:=int64(bssttxbii)
-	return bsstrxbi+bsstrxbi
+	bssttxbi:=int64(bssttxbii)
+	return bsstrxbi+bssttxbi
 }
 
 var lastch int64
