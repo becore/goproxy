@@ -59,7 +59,9 @@ Lastreset int64
 	}
 
 func usegedisksync(){
+	fmt.Println("sync")
 	if _, err := os.Stat("syncstat.json"); err == nil {
+		fmt.Println("fe")
 	var disksyncp Dsync
 	if numsync==0{
 		fd,_:=os.Open("syncstat.json")
@@ -87,6 +89,7 @@ func usegedisksync(){
 		fmt.Println(disksyncp)
 			}
 	}else{
+		fmt.Println("fne")
 		fd,_:=os.Create("syncstat.json")
 		fmt.Println("Create sync prof")
 		var disksyncp Dsync
