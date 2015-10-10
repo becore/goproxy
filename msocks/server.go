@@ -67,7 +67,7 @@ func usegedisksync(){
 		fd,_:=os.Open("syncstat.json")
 		fmt.Println("read sync prof")
 		b,_:=ioutil.ReadAll(fd)
-		json.Unmarshal(b,disksyncp)
+		json.Unmarshal(b,&disksyncp)
 		lastdayuse=disksyncp.Lastdayuse
 		lastreset=disksyncp.Lastreset
 		//lastch=disksyncp.Lastch
