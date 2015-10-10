@@ -58,16 +58,29 @@ Lastreset int64
 
 func usegedisksync(){
 	if _, err := os.Stat("syncstat.json"); err == nil {
-	
+	var disksyncp Dsync
+	if numsync==0{
+		fd,_:=os.Open("syncstat.json")
+		b,_:=ioutil.ReadAll(fd)
+		json.Unmarshal(b,disksyncp)
+		lastdayuse=disksyncp.Lastdayuse
+		lastreset=disksyncp.Lastreset
+		lastch=disksyncp.Lastch
+		numsync=disksyncp.Numsync+1
+		}else{
+			
+			}
 	}else{
 		fd,_:=os.Create("syncstat.json")
 		var disksyncp Dsync
-		disksyncp.Numsync=0
+		disksyncp.Numsync=1
+		numsync=1
 		disksyncp.Lastdayuse=getusegev()
 		disksyncp.Lastreset=time.Now().Unix()
 		disksyncp.Lastch=time.Now().Unix()
-		
-		
+		b, _ := json.Marshal(disksyncp)
+		fd.Write(b)
+		fd.Close()
 		}
 	}
 var numsync int64
