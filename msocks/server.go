@@ -16,6 +16,7 @@ import "os/exec"
 import "io/ioutil"
 import "strings"
 import "strconv"
+import "os"
 
 
 
@@ -44,6 +45,32 @@ stdout, err := cmd.StdoutPipe()
 	fmt.Println(bs,bss,bsstrxb,bssttxb) 
 	return bsstrxbi+bssttxbi
 }
+
+type Dsync struct{
+Numsync int64
+
+Lastch int64
+
+Lastdayuse int64
+
+Lastreset int64
+	}
+
+func usegedisksync(){
+	if _, err := os.Stat("syncstat.json"); err == nil {
+	
+	}else{
+		fd,_:=os.Create("syncstat.json")
+		var disksyncp Dsync
+		disksyncp.Numsync=0
+		disksyncp.Lastdayuse=getusegev()
+		disksyncp.Lastreset=time.Now().Unix()
+		disksyncp.Lastch=time.Now().Unix()
+		
+		
+		}
+	}
+var numsync int64
 
 var lastch int64
 
