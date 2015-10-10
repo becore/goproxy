@@ -70,7 +70,7 @@ func usegedisksync(){
 		fd.Close()
 		}else{
 		fd,_:=os.Create("syncstat.json")
-		var disksyncp Dsync
+		//var disksyncp Dsync
 		disksyncp.Lastdayuse=lastdayuse
 		disksyncp.Lastreset=lastreset
 		disksyncp.Lastch=lastch
