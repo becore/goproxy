@@ -10,6 +10,8 @@ import (
 	"github.com/xiaokangwang/goproxy/sutils"
 	"fmt"
 	
+	"encoding/json"
+	
 )
 
 import "os/exec"
