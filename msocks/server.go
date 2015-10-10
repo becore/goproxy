@@ -63,11 +63,12 @@ func usegedisksync(){
 	var disksyncp Dsync
 	if numsync==0{
 		fd,_:=os.Open("syncstat.json")
+		fmt.Printf("read sync prof")
 		b,_:=ioutil.ReadAll(fd)
 		json.Unmarshal(b,disksyncp)
 		lastdayuse=disksyncp.Lastdayuse
 		lastreset=disksyncp.Lastreset
-		lastch=disksyncp.Lastch
+		//lastch=disksyncp.Lastch
 		numsync=disksyncp.Numsync+1
 		fd.Close()
 		}else{
@@ -75,7 +76,7 @@ func usegedisksync(){
 		//var disksyncp Dsync
 		disksyncp.Lastdayuse=lastdayuse
 		disksyncp.Lastreset=lastreset
-		disksyncp.Lastch=lastch
+		//disksyncp.Lastch=lastch
 		disksyncp.Numsync=numsync+1
 		numsync+=1
 		b, _ := json.Marshal(disksyncp)
@@ -84,12 +85,13 @@ func usegedisksync(){
 			}
 	}else{
 		fd,_:=os.Create("syncstat.json")
+		fmt.Printf("Create sync prof")
 		var disksyncp Dsync
 		disksyncp.Numsync=1
 		numsync=1
 		disksyncp.Lastdayuse=getusegev()
 		disksyncp.Lastreset=time.Now().Unix()
-		disksyncp.Lastch=time.Now().Unix()
+		//disksyncp.Lastch=time.Now().Unix()
 		b, _ := json.Marshal(disksyncp)
 		fd.Write(b)
 		fd.Close()
