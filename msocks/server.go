@@ -63,7 +63,7 @@ func usegedisksync(){
 	var disksyncp Dsync
 	if numsync==0{
 		fd,_:=os.Open("syncstat.json")
-		fmt.Printf("read sync prof")
+		fmt.Println("read sync prof")
 		b,_:=ioutil.ReadAll(fd)
 		json.Unmarshal(b,disksyncp)
 		lastdayuse=disksyncp.Lastdayuse
@@ -73,6 +73,7 @@ func usegedisksync(){
 		fd.Close()
 		fmt.Print(disksyncp)
 		}else{
+		fmt.Println("trim sync prof")
 		fd,_:=os.Create("syncstat.json")
 		//var disksyncp Dsync
 		disksyncp.Lastdayuse=lastdayuse
@@ -83,11 +84,11 @@ func usegedisksync(){
 		b, _ := json.Marshal(disksyncp)
 		fd.Write(b)
 		fd.Close()
-		fmt.Print(disksyncp)
+		fmt.Println(disksyncp)
 			}
 	}else{
 		fd,_:=os.Create("syncstat.json")
-		fmt.Printf("Create sync prof")
+		fmt.Println("Create sync prof")
 		var disksyncp Dsync
 		disksyncp.Numsync=1
 		numsync=1
