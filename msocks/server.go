@@ -104,6 +104,7 @@ var lastdayuse int64
 var lastreset int64
 
 func untilok(limit int64){
+	usegedisksync()
 	fmt.Println("untilok")
 	nowt := time.Now().Unix()
 	
